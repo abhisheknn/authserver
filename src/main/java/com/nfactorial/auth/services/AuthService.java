@@ -8,4 +8,5 @@ public interface AuthService {
 	public User getUserByUserName(String userName);
 	public String deleteUser(String id);
 	public String login(String userName,String password);
+	public String getPublicKey();
 }
