@@ -24,7 +24,7 @@ public class AuthControllerImpl implements AuthController {
 	@Override
 	public Response login(@RequestBody User user) {
 		
-		return Response.ok(authService.getUserByUserName(user.getUserName())).build();
+		return Response.ok(authService.login(user.getUserName(),user.getPassword())).build();
 	}
 	
 	@RequestMapping(value="/register",method = RequestMethod.POST)

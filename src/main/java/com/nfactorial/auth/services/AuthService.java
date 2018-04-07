@@ -7,4 +7,5 @@ public interface AuthService {
 	public String updateUser(User user);
 	public User getUserByUserName(String userName);
 	public String deleteUser(String id);
+	public String login(String userName,String password);
 }

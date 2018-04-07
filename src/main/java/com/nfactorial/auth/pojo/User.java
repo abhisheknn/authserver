@@ -1,7 +1,11 @@
 package com.nfactorial.auth.pojo;
 
+import java.util.Map;
+
 import javax.validation.constraints.Null;
 import javax.ws.rs.DefaultValue;
+
+
 
 public class User {
 private String userName;
@@ -10,13 +14,13 @@ private String email;
 private String mobileNo;
 private String name;
 private String id;
-private String jwtToken;
-
-public String getJwtToken() {
-	return jwtToken;
+private String JWToken;
+private Map<String,Object> roles;
+public String getJWToken() {
+	return JWToken;
 }
-public void setJwtToken(String jwtToken) {
-	this.jwtToken = jwtToken;
+public void setJWToken(String JWToken) {
+	this.JWToken = JWToken;
 }
 public String getId() {
 	return id;
@@ -43,12 +47,11 @@ public void setName(String name) {
 	this.name = name;
 }
 
-String[] roles;
 
-public String[] getRoles() {
+public Map<String, Object> getRoles() {
 	return roles;
 }
-public void setRoles(String[] roles) {
+public void setRoles(Map<String, Object> roles) {
 	this.roles = roles;
 }
 public String getUserName() {
