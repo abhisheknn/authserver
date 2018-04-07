@@ -1,6 +1,8 @@
 #Docker Image 
 sudo docker run --name redis -p 6379:6379 -d redis
 
+sudo service docker restart
+
 #Redis Command Used:
 
 1) hmset(String key,Map<String,String>)
