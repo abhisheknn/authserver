@@ -47,4 +47,12 @@ public class AuthControllerImpl implements AuthController {
 	
 		return Response.ok(authService.deleteUser(userName)).build();
 	}
+	
+	
+	@RequestMapping(value="/getPublickey",method = RequestMethod.GET)
+	@Override
+	public Response getPublicKey() {
+	
+		return Response.ok(authService.getPublicKey()).build();
+	}
 }

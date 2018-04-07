@@ -15,5 +15,6 @@ public Response login(User user);
 public Response register(User user);
 public Response delete(String userName);
 public Response update(User user);
+public Response getPublicKey();
 
 }

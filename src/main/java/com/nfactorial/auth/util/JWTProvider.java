@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.nfactorial.auth.constant.AppConstants;
 import com.nfactorial.auth.pojo.User;
 
 import io.jsonwebtoken.Jwts;
@@ -27,7 +28,7 @@ public String getToken(String userName,Map<String, Object> claims) {
  
  try {
 	
-	 Key key=keyProvider.getPrivateKey("jwtsigningkey"); // Get this form configuration server 
+	 Key key=keyProvider.getPrivateKey(AppConstants.CERTALIAS); // Get this form configuration server 
 		 s=Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date())

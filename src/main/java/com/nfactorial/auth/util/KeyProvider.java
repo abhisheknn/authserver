@@ -23,6 +23,8 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
+import com.nfactorial.auth.constant.AppConstants;
+
 import sun.security.x509.AlgorithmId;
 import sun.security.x509.CertificateAlgorithmId;
 import sun.security.x509.CertificateSerialNumber;
@@ -80,9 +82,9 @@ public class KeyProvider {
 		        keyPairGenerator.initialize(4096);							// get the size from configuaration server		
 		        KeyPair keyPair = keyPairGenerator.generateKeyPair();
 		        KeyStore keyStore = getKeyStore();
-	        	Certificate[] chain = {generateCertificate(dn, keyPair, 365, "SHA256withRSA")};  // get Signing algorithm from configuration server
-	        	keyStore.setKeyEntry(alias, keyPair.getPrivate(), "wintermore".toCharArray(), chain); // Get the password from configuration server
-	        	keyStore.store(new FileOutputStream(getKeyStoreFile()), "wintermore".toCharArray()); // Get the password from configuration server
+	        	Certificate[] chain = {generateCertificate(dn, keyPair, 365, AppConstants.SIGNINGALGO)};  // get Signing algorithm from configuration server
+	        	keyStore.setKeyEntry(alias, keyPair.getPrivate(), AppConstants.keyStorePassword.toCharArray(), chain); // Get the password from configuration server
+	        	keyStore.store(new FileOutputStream(getKeyStoreFile()), AppConstants.keyStorePassword.toCharArray()); // Get the password from configuration server
 			} catch (KeyStoreException e) {
 				// Send this to kafka topic
 				e.printStackTrace();
@@ -106,7 +108,7 @@ public class KeyProvider {
 
 	}
 	private File getKeyStoreFile() {
-		File file = new File("keyserverstore.keystore"); // Get the password from configuration server
+		File file = new File(AppConstants.keyStoreName); // Get the password from configuration server
 		return file;
 	}
 	
@@ -136,7 +138,7 @@ public Key getPrivateKey(String alias) {
 		
 		try {
 			KeyStore keyStore= getKeyStore();
-			return  keyStore.getKey(alias,"wintermore".toCharArray()); // Get the password from configuration server
+			return  keyStore.getKey(alias,AppConstants.keyStorePassword.toCharArray()); // Get the password from configuration server
 		} catch (UnrecoverableKeyException e) {
 			// Send this to kafka topic
 			e.printStackTrace();
@@ -157,11 +159,11 @@ public Key getPrivateKey(String alias) {
 	    	File file=getKeyStoreFile();
 	    	KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 	    if (file.exists()) {
-	        keyStore.load(new FileInputStream(file), "wintermore".toCharArray()); // Get the password from configuration server
+	        keyStore.load(new FileInputStream(file), AppConstants.keyStorePassword.toCharArray()); // Get the password from configuration server
 	    } else {
 	        
 	        keyStore.load(null, null);
-	        keyStore.store(new FileOutputStream(file), "wintermore".toCharArray()); // Get the password from configuration server
+	        keyStore.store(new FileOutputStream(file), AppConstants.keyStorePassword.toCharArray()); // Get the password from configuration server
 	    }
 	    return keyStore;
 	}
