@@ -38,7 +38,7 @@ public class RedisConnection {
 	private GenericObjectPool<StatefulRedisConnection<String, String>> pool=null;
 @PostConstruct
 public void init() {
-	client = RedisClient.create(RedisURI.create("localhost", 6379)); // get this from configuration file 
+	client = RedisClient.create(RedisURI.create("localhost", 6379)); // get this from config server or kuberentes
 	pool   = ConnectionPoolSupport
 	        .createGenericObjectPool(() -> client.connect(), new GenericObjectPoolConfig());
 }
