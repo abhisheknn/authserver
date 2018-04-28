@@ -1,4 +1,4 @@
-package com.nfactorial.auth.redis;
+package com.micro.auth.redis;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

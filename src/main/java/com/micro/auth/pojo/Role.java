@@ -1,4 +1,4 @@
-package com.nfactorial.auth.pojo;
+package com.micro.auth.pojo;
 
 public class Role {
 

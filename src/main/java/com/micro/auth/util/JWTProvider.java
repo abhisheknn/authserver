@@ -1,4 +1,4 @@
-package com.nfactorial.auth.util;
+package com.micro.auth.util;
 
 import java.security.Key;
 import java.security.KeyStore;
@@ -10,8 +10,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.nfactorial.auth.constant.AppConstants;
-import com.nfactorial.auth.pojo.User;
+import com.micro.auth.constant.AppConstants;
+import com.micro.auth.pojo.User;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

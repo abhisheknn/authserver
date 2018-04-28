@@ -1,4 +1,4 @@
-package com.nfactorial.auth.dao;
+package com.micro.auth.dao;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lambdaworks.redis.api.StatefulRedisConnection;
 import com.lambdaworks.redis.api.sync.RedisCommands;
-import com.nfactorial.auth.pojo.User;
-import com.nfactorial.auth.redis.RedisConnection;
+import com.micro.auth.pojo.User;
+import com.micro.auth.redis.RedisConnection;
 
 @Component
 public class RedisDaoImpl implements RedisDao {

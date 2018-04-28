@@ -1,4 +1,4 @@
-package com.nfactorial.auth;
+package com.micro.auth;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package com.nfactorial.auth.constant;
+package com.micro.auth.constant;
 
 public class AppConstants {
 public static final String SIGNINGALGO = "SHA256withRSA";

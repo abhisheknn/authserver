@@ -1,8 +1,8 @@
-package com.nfactorial.auth.dao;
+package com.micro.auth.dao;
 
 import java.util.Map;
 
-import com.nfactorial.auth.pojo.User;
+import com.micro.auth.pojo.User;
 
 public interface RedisDao {
 
