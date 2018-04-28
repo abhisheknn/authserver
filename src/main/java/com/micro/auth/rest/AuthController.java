@@ -1,4 +1,4 @@
-package com.nfactorial.auth.rest;
+package com.micro.auth.rest;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -6,7 +6,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nfactorial.auth.pojo.User;
+import com.micro.auth.pojo.User;
 
 
 public interface AuthController {

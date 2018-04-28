@@ -1,6 +1,6 @@
-package com.nfactorial.auth.services;
+package com.micro.auth.services;
 
-import com.nfactorial.auth.pojo.User;
+import com.micro.auth.pojo.User;
 
 public interface AuthService {
 	public String createUser(User user);

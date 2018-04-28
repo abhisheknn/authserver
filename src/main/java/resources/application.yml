@@ -1,6 +1,9 @@
+server:
+  port: 8585
 security:
   user:
     name: admin
     password: pwd
   ignored:
-  - "*.bundle.*" 
+  - "*.bundle.*"
+ 

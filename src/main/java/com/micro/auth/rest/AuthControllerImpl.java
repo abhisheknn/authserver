@@ -1,4 +1,4 @@
-package com.nfactorial.auth.rest;
+package com.micro.auth.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nfactorial.auth.pojo.User;
-import com.nfactorial.auth.services.AuthService;
+import com.micro.auth.pojo.User;
+import com.micro.auth.services.AuthService;
 
 @RestController
 @RequestMapping("/authserver")

@@ -1,4 +1,4 @@
-package com.nfactorial.auth.services;
+package com.micro.auth.services;
 
 import java.security.Key;
 import java.security.KeyFactory;
@@ -20,11 +20,11 @@ import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nfactorial.auth.constant.AppConstants;
-import com.nfactorial.auth.dao.RedisDao;
-import com.nfactorial.auth.pojo.User;
-import com.nfactorial.auth.util.JWTProvider;
-import com.nfactorial.auth.util.KeyProvider;
+import com.micro.auth.constant.AppConstants;
+import com.micro.auth.dao.RedisDao;
+import com.micro.auth.pojo.User;
+import com.micro.auth.util.JWTProvider;
+import com.micro.auth.util.KeyProvider;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
