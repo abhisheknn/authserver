@@ -4,6 +4,8 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ public class AuthControllerImpl implements AuthController {
 	@Autowired
 	AuthService authService;
 	
+	@CrossOrigin(origins = "https://localhost:9443")
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	@Override
 	public Response login(@RequestBody User user) {
@@ -27,6 +30,7 @@ public class AuthControllerImpl implements AuthController {
 		return Response.ok(authService.login(user.getUserName(),user.getPassword())).build();
 	}
 	
+	@CrossOrigin(origins = "https://localhost:9443")
 	@RequestMapping(value="/register",method = RequestMethod.POST)
 	@Override
 	public Response register(@RequestBody User user) {
@@ -48,11 +52,18 @@ public class AuthControllerImpl implements AuthController {
 		return Response.ok(authService.deleteUser(userName)).build();
 	}
 	
-	
-	@RequestMapping(value="/getPublickey",method = RequestMethod.GET)
+	@CrossOrigin(origins = "https://localhost:9443")
+	@RequestMapping(value="/getPublicKey",method = RequestMethod.GET)
 	@Override
-	public Response getPublicKey() {
+	public ResponseEntity<String> getPublicKey() {
 	
-		return Response.ok(authService.getPublicKey()).build();
+		return ResponseEntity.ok(authService.getPublicKey());
+	}
+	
+	@RequestMapping(value="/refreshToken",method = RequestMethod.POST)
+	@Override
+	public Response refreshToken(@RequestBody User user) {
+	
+		return Response.ok(authService.refreshToken(user.getUserName())).build();
 	}
 }
