@@ -3,6 +3,7 @@ package com.micro.auth.rest;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public Response login(User user);
 public Response register(User user);
 public Response delete(String userName);
 public Response update(User user);
-public Response getPublicKey();
+public ResponseEntity<String> getPublicKey();
+public Response refreshToken(User user);
 
 }

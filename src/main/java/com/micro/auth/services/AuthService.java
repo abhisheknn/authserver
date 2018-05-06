@@ -9,4 +9,5 @@ public interface AuthService {
 	public String deleteUser(String id);
 	public String login(String userName,String password);
 	public String getPublicKey();
+	public String refreshToken(String userName);
 }
