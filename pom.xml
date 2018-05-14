@@ -11,7 +11,7 @@
 <properties>
    <maven.compiler.source>1.8</maven.compiler.source>
    <maven.compiler.target>1.8</maven.compiler.target>
-   <docker.image.prefix>registry.hub.docker.com/abhisheknn</docker.image.prefix>
+   <docker.image.prefix>abhisheknn</docker.image.prefix>
 </properties>
 
   <parent>
