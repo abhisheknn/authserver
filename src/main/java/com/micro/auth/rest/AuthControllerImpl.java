@@ -22,7 +22,7 @@ public class AuthControllerImpl implements AuthController {
 	@Autowired
 	AuthService authService;
 	
-	@CrossOrigin(origins = "https://localhost:9443")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	@Override
 	public Response login(@RequestBody User user) {
@@ -30,7 +30,7 @@ public class AuthControllerImpl implements AuthController {
 		return Response.ok(authService.login(user.getUserName(),user.getPassword())).build();
 	}
 	
-	@CrossOrigin(origins = "https://localhost:9443")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/register",method = RequestMethod.POST)
 	@Override
 	public Response register(@RequestBody User user) {
@@ -52,7 +52,7 @@ public class AuthControllerImpl implements AuthController {
 		return Response.ok(authService.deleteUser(userName)).build();
 	}
 	
-	@CrossOrigin(origins = "https://localhost:9443")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/getPublicKey",method = RequestMethod.GET)
 	@Override
 	public ResponseEntity<String> getPublicKey() {
