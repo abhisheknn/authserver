@@ -1,5 +1,7 @@
 package com.micro.auth.rest;
 
+import java.net.URI;
+
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
@@ -11,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.micro.auth.pojo.User;
 import com.micro.auth.services.AuthService;
 
 @RestController
-@RequestMapping("/authserver")
-public class AuthControllerImpl implements AuthController {
+@RequestMapping("/user")
+public class AuthUserControllerImpl implements AuthUserController {
 	
 	@Autowired
 	AuthService authService;
@@ -32,10 +35,12 @@ public class AuthControllerImpl implements AuthController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value="/register",method = RequestMethod.POST)
-	@Override
-	public Response register(@RequestBody User user) {
-	
-		return Response.ok(authService.createUser(user)).build();
+	//@Override
+	public ResponseEntity register(@RequestBody User user) {
+		
+		URI location =ServletUriComponentsBuilder.fromCurrentRequest().path("{username}").buildAndExpand(user.getUserName()).toUri();
+		
+		return ResponseEntity.created(location).build();
 	}
 	
 	@RequestMapping(value="/update",method = RequestMethod.POST)
@@ -52,13 +57,6 @@ public class AuthControllerImpl implements AuthController {
 		return Response.ok(authService.deleteUser(userName)).build();
 	}
 	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value="/getPublicKey",method = RequestMethod.GET)
-	@Override
-	public ResponseEntity<String> getPublicKey() {
-	
-		return ResponseEntity.ok(authService.getPublicKey());
-	}
 	
 	@RequestMapping(value="/refreshToken",method = RequestMethod.POST)
 	@Override
