@@ -9,3 +9,7 @@ sudo docker run --name redis -p 6379:6379 -d redis
 
 Using Lettuce for redis connection and operation .
 https://github.com/lettuce-io/lettuce-core
+
+
+For kafka 
+docker run -p 2181:2181 -p 9092:9092 spotify/kafka
