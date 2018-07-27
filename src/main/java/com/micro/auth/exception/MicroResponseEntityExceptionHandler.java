@@ -18,8 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class MicroResponseEntityExceptionHandler 
 extends ResponseEntityExceptionHandler {
- //Logger logger= Logger.getLogger(MicroResponseEntityExceptionHandler.class);
-	 private static final Logger logger = LogManager.getLogger(MicroResponseEntityExceptionHandler.class);
+ private static final Logger logger = LogManager.getLogger(MicroResponseEntityExceptionHandler.class);
 	//@Override
 	@ExceptionHandler(UserNotFoundException.class)
 	protected ResponseEntity<Object> handleUserNotFoundExceptionInternal(UserNotFoundException ex, WebRequest request) {
