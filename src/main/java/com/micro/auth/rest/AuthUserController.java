@@ -13,7 +13,7 @@ import com.micro.auth.pojo.User;
 public interface AuthUserController {
 
 public Response login(User user);
-//public Response register(User user);
+public ResponseEntity register(User user);
 public Response delete(String userName);
 public Response update(User user);
 public Response refreshToken(User user);

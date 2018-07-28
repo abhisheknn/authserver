@@ -1,5 +1,7 @@
 package com.micro.auth.services;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +12,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ws.rs.core.Response;
 import javax.xml.bind.DatatypeConverter;
@@ -65,11 +68,30 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public User getUserByUserName(String userName) {
 		Map<String, String> userMap = redisDao.getUser(userName);
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		User user = mapper.convertValue(userMap, User.class);
+		if(userMap.isEmpty())
+			return null;
+		User user =(User)convertMaptoObject(userMap,User.class);
 		return user;
+	}
+
+	private Object convertMaptoObject(Map<String, String> userMap,Class clazz) {
+		Set<String> keys=userMap.keySet();
+		Class userClass= clazz;
+		Object dummy = null;
+		try {
+			dummy = clazz.newInstance();
+		} catch (Exception e1) {
+			// ignore this
+		}
+		for(String key :keys) {
+			try {
+				Method method = userClass.getMethod("set"+key.replaceFirst(key.charAt(0)+"",(key.charAt(0)+"").toUpperCase()), String.class);
+				Object returnValue= method.invoke(dummy, userMap.get(key));
+			} catch (Exception e) {
+				// ignore this
+			}
+		}
+		return dummy;
 	}
 
 	@Override

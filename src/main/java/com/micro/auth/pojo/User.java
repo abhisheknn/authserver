@@ -2,14 +2,18 @@ package com.micro.auth.pojo;
 
 import java.util.Map;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 import javax.ws.rs.DefaultValue;
-
+import javax.validation.constraints.Pattern;
 
 
 public class User {
 private String userName;
 private String password;
+@NotNull
+//@Pattern(regexp="^([a-zA-Z0-9\\-\\.\\_]+)'+'(\\@)([a-zA-Z0-9\\-\\.]+)'+'(\\.)([a-zA-Z]{2,4})$",message="Enter Valid Email ID")
 private String email;
 private String mobileNo;
 private String name;
@@ -54,6 +58,7 @@ public Map<String, Object> getRoles() {
 public void setRoles(Map<String, Object> roles) {
 	this.roles = roles;
 }
+
 public String getUserName() {
 	return userName;
 }

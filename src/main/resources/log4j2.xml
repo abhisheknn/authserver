@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="authserver">
+<Appenders>
+    <Kafka name="Kafka" topic="authserver">
+      <PatternLayout pattern="%date %message"/>
+        <Property name="bootstrap.servers">localhost:9092</Property>
+    </Kafka>
+  </Appenders>
+
+<Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="Kafka"/>
+    </Root>
+    <Logger name="org.apache.kafka" level="INFO" /> <!-- avoid recursive logging -->
+  </Loggers>
+
+</configuration>
